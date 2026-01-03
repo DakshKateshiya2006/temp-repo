@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <h2 onclick="alert(this.innerHTML)">HELLO</h2>
+        <div onmouseover="mover(this)" onmouseout="mout(this)">Mouse over</div>
+        <script>
+            function mover(e) {
+                e.innerHTML="Thank You"
+                e.style.color = "Red";
+            }
+            function mout(e) {
+                e.innerHTML="Mouse Over Me"
+                e.style.color = "Blue";
+            }
+        </script>
+    </body>
+</html>

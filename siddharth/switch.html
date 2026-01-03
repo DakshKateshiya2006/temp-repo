@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script language="javascript" type="text/javascript">
+        let role="admin"
+        switch(role){
+        case "admin":
+            console.log("full access")
+            break;
+        case "editor":
+            console.log("EDIT ACCESS")
+            break;
+        default :
+            console.log("no access")
+        }
+
+        const marks=85;
+        let branch;
+        switch(true)
+        {
+            case marks>=90:
+                branch="ce"
+                break;
+            case marks>=80:
+                branch="aiml"
+                break;
+            case marks>=60:
+                branch="me"
+                break;
+            default:branch="ec"
+                break
+        }
+        console.log(`branch is: ${branch}`);
+    </script>
+</head>
