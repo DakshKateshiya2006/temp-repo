@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dayflow HRMS – Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: #f4f6f8; }
+
+    /* ================= LOGIN ================= */
+    .login-page {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #111827, #1f2937);
+    }
+
+    .login-box {
+      background: #fff;
+      width: 380px;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    .login-box h2 { margin-bottom: 10px; }
+    .login-box p { color: #6b7280; margin-bottom: 30px; }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #2563eb;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* ================= APP ================= */
+    .app { display: none; height: 100vh; }
+
+    /* Navbar */
+    .navbar {
+      background: #111827;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #d1d5db;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    /* Layout */
+    .container { display: flex; height: calc(100vh - 60px); }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #1f2937;
+      color: white;
+      padding: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #d1d5db;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover { background: #374151; color: white; }
+
+    /* Main */
+    .main { flex: 1; padding: 30px; overflow-y: auto; }
+
+    /* Dashboard Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    /* Carousel */
+    .carousel {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 180px;
+      position: relative;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: none;
+    }
+
+    .carousel img.active { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- ================= LOGIN PAGE ================= -->
+<div class="login-page" id="loginPage">
+  <div class="login-box">
+    <h2>Admin / HR Login</h2>
+    <p>Login to Dayflow HRMS</p>
+    <input type="text" placeholder="Username" id="username" />
+    <input type="password" placeholder="Password" id="password" />
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div class="app" id="app">
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h3>Dayflow HRMS</h3>
+    <div class="nav-links">
+      <a href="#">Dashboard</a>
+      <a href="#">Employees</a>
+      <a href="#">Attendance</a>
+      <a href="#">Leave</a>
+      <a href="#">Payroll</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="#">Admin Dashboard</a>
+      <a href="#">Employee Management</a>
+      <a href="#">Leave Approvals</a>
+      <a href="#">Attendance Records</a>
+      <a href="#">Reports</a>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <h2>Admin Dashboard</h2>
+
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card"><h3>Total Employees</h3><p>120</p></div>
+        <div class="card"><h3>Pending Leaves</h3><p>8</p></div>
+        <div class="card"><h3>Present Today</h3><p>95</p></div>
+        <div class="card"><h3>Payroll Status</h3><p>Processed</p></div>
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel">
+        <img src="https://picsum.photos/1200/400?1" class="active" />
+        <img src="https://picsum.photos/1200/400?2" />
+        <img src="https://picsum.photos/1200/400?3" />
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<script>
+  function login() {
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+  }
+
+  // Carousel
+  let index = 0;
+  const images = document.querySelectorAll('.carousel img');
+  setInterval(() => {
+    images[index].classList.remove('active');
+    index = (index + 1) % images.length;
+    images[index].classList.add('active');
+  }, 3000);
+</script>
+
+</body>
+</html>
